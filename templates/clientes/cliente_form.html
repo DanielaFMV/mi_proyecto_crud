@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    {% if object %}Editar Cliente{% else %}Nuevo Cliente{% endif %}
+{% endblock %}
+
+{% block content %}
+<h2>{% if object %}Editar: {{ object }}{% else %}Registrar nuevo cliente{% endif %}</h2>
+<hr>
+
+<form method="POST">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit" class="btn btn-primary">Guardar</button>
+    <a href="{% url 'clientes:lista' %}" class="btn btn-secondary">Cancelar</a>
+</form>
+{% endblock %}
